@@ -1,0 +1,27 @@
+nohup: ввод игнорируется
+[I 14:20:16.332 NotebookApp] Serving notebooks from local directory: /home/legin/reps/VarHyperNet
+[I 14:20:16.332 NotebookApp] The Jupyter Notebook is running at:
+[I 14:20:16.332 NotebookApp] http://legin-pc:9999/
+[I 14:20:16.332 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+Traceback (most recent call last):
+  File "/usr/local/bin/jupyter-notebook", line 8, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python3.8/dist-packages/jupyter_core/application.py", line 270, in launch_instance
+    return super(JupyterApp, cls).launch_instance(argv=argv, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/traitlets/config/application.py", line 664, in launch_instance
+    app.start()
+  File "/usr/local/lib/python3.8/dist-packages/notebook/notebookapp.py", line 1936, in start
+    self.launch_browser()
+  File "/usr/local/lib/python3.8/dist-packages/notebook/notebookapp.py", line 1867, in launch_browser
+    browser = webbrowser.get(self.browser or None)
+  File "/usr/lib/python3.8/webbrowser.py", line 42, in get
+    register_standard_browsers()
+  File "/usr/lib/python3.8/webbrowser.py", line 551, in register_standard_browsers
+    raw_result = subprocess.check_output(cmd, stderr=subprocess.DEVNULL)
+  File "/usr/lib/python3.8/subprocess.py", line 411, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.8/subprocess.py", line 491, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.8/subprocess.py", line 1011, in communicate
+    stdout = self.stdout.read()
+KeyboardInterrupt
