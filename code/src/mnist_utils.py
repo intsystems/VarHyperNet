@@ -4,12 +4,10 @@ from torch.nn.utils import clip_grad_value_
 import tqdm
 
         
-def train_batches_net(train_loader,  train_data_num, net, device, loss_fn, optimizer, lam, label, batch_num=None, rep = False):
-    tq = tqdm.tqdm_notebook(train_loader)
+def train_batches_net(train_loader,  train_data_num, net, device, loss_fn, optimizer, lam, label, rep = False):
+    tq = tqdm.tqdm(train_loader)
     losses = []
-    bn = 0
     for x,y in tq:            
-        
         x = x.to(device)
         y = y.to(device)          
         optimizer.zero_grad()  
@@ -26,15 +24,11 @@ def train_batches_net(train_loader,  train_data_num, net, device, loss_fn, optim
         loss.backward()       
         clip_grad_value_(net.parameters(), 1.0) # для стабильности градиента. С этим можно играться
         optimizer.step()
-        bn+=1
-        if batch_num is not None and bn >= batch_num:
-            break
         
 def train_batches_hypernet(train_loader,  train_data_num, lambda_sample_num,
                   lambda_encode, net, device, loss_fn, optimizer, label, rep = False, p_gen = lambda p_:p_*4-2, pretrain=False):
     tq = tqdm.tqdm(train_loader)
     losses = []
-   
     for x,y in tq:            
         x = x.to(device)
         y = y.to(device)          
@@ -43,9 +37,8 @@ def train_batches_hypernet(train_loader,  train_data_num, lambda_sample_num,
        
         for _ in range(lambda_sample_num):  
             p = p_gen(t.rand(1).to(device))            
-            
             lam_param = 10**p[0]           
-            
+
             out = net(x, lambda_encode(lam_param))
             loss = loss + loss_fn(out, y)/lambda_sample_num
             fn_loss = loss.cpu().detach().numpy()
