@@ -8,7 +8,7 @@ Contacts: grebenkova.os(at)phystech.edu
 ## Annotation
 An example of hypernetwork accuracy surface: significant complexity regularization implies models with lower accuracy and higher robustness under pruning. Surface color vary from dark blue to dark red and shows represent the accuracy relative to other models with the same number of model parameters. The colors of the white line marks the most optimal models for different complexity values.
 
-<img src="Fig1.png" width="512"/>
+<img src="Var.png" width="512"/>
 
 
 
