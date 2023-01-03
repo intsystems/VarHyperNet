@@ -13,4 +13,4 @@ An example of hypernetwork accuracy surface: significant complexity regularizati
 
 
 ## How to run
-To run experiments run notebooks in for [CIFAR-10](code/cifar_final) or [MNIST](code/mnist_final)
+Run notebooks in for [CIFAR-10](code/cifar_final) or [MNIST](code/mnist_final)
